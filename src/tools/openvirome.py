@@ -14,7 +14,7 @@ def get_similar_viruses():
     ]
 
 
-def get_palmids_by_species(species: str) -> dict[str, object]:
+def get_palm_ids_by_species(species: str) -> dict[str, object]:
     """
     Fetch palm_ids from the Serratus database based on a virus species name.
     Args:
@@ -36,4 +36,7 @@ def get_palmids_by_species(species: str) -> dict[str, object]:
     WHERE percent_identity >= 90
     """
     rows = run_sql_query(query, params=(species,))
+    if len(rows) <= 1:
+        return {"data": []}
+
     return {"data": rows}

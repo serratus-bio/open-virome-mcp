@@ -4,7 +4,7 @@ from src.resources.psql import (
     get_serratus_connection,
     run_sql_query,
 )
-from src.resources.ncbi import get_pubmed_article
+from src.resources.ncbi import get_pubmed_article_data
 
 
 def register_resources(mcp):
@@ -20,7 +20,7 @@ def register_resources(mcp):
         return {"error": error_msg}
 
     @mcp.resource("db://serratus/palmdb/{palm_id}")
-    def get_palm_id_data(palm_id: str) -> dict[str, object]:
+    def get_palm_id_row(palm_id: str) -> dict[str, object]:
         """Fetch data for a specific palm_id from the Serratus database."""
         query = "SELECT * FROM public.palmdb2 WHERE palm_id = %s"
         try:
@@ -32,10 +32,10 @@ def register_resources(mcp):
             return _handle_error(f"Error fetching palm_id {palm_id}: {error}")
 
     @mcp.resource("db://ncbi/pubmed/{pmid}")
-    def get_pubmed_data(pmid: str) -> dict[str, object]:
+    def get_pubmed_article(pmid: str) -> dict[str, object]:
         """Fetch a PubMed article by ID and return the abstract."""
         try:
-            abstract = get_pubmed_article(pmid)
+            abstract = get_pubmed_article_data(pmid)
             return {"pmid": pmid, "abstract": abstract}
         except Exception as error:
             return _handle_error(f"Error fetching PubMed article {pmid}: {error}")

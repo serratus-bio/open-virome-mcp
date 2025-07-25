@@ -1,6 +1,7 @@
 import os
-from neo4j import GraphDatabase, Driver, Session, Record
 from typing import Any
+
+from neo4j import GraphDatabase, Driver, Session, Record
 
 
 class Neo4jConnection:
@@ -10,7 +11,8 @@ class Neo4jConnection:
         self._pwd: str | None = pwd
         self._driver: Driver | None = None
         try:
-            self._driver = GraphDatabase.driver(self._uri, auth=(self._user, self._pwd))  # type: ignore
+            self._driver = GraphDatabase.driver(
+                self._uri, auth=(self._user, self._pwd))  # type: ignore
         except Exception as e:
             print("Failed to create the driver:", e)
 
