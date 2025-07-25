@@ -3,6 +3,7 @@ import logging
 from src.tools.workflows.register import register_workflows
 from src.tools.openvirome import (
     get_similar_viruses,
+    get_palmids_by_species,
 )
 
 
@@ -27,3 +28,16 @@ def register_tools(mcp):
             return get_similar_viruses()
         except Exception as error:
             return _handle_error(f"Error fetching similar viruses: {error}")
+
+    @mcp.tool("get_palmids_by_species")
+    def palmids_from_species_tool(species_name: str):
+        """Fetch palm_ids from a given virus name."""
+        try:
+            palmids = get_palmids_by_species(species_name)
+            if not palmids:
+                return _handle_error(
+                    f"No palm_ids found for species name: {species_name}"
+                )
+            return palmids
+        except Exception as error:
+            return _handle_error(f"Error fetching palm_ids for {species_name}: {error}")

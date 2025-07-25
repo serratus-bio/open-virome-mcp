@@ -21,7 +21,7 @@ source .venv/bin/activate
 uv sync
 ```
 
-### Set up environemnt variables
+### Set up environment variables
 
 Copy the example environment variables and fill in
 
@@ -75,4 +75,5 @@ In left panel, enter command and argument values if not already pre-filled, then
 These can be added as github actions later
 
 Format: `black .`
+
 Lint: `pylint src`
