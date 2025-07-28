@@ -8,4 +8,3 @@ def register_workflows(mcp):
         mcp: The FastMCP server instance
     """
     logging.info("Registering workflow tools")
-    pass
