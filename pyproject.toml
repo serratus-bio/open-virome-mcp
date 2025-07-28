@@ -12,4 +12,5 @@ dependencies = [
     "neo4j>=5.28.1",
     "psycopg2>=2.9.10",
     "pylint>=3.3.7",
+    "requests>=2.32.4",
 ]

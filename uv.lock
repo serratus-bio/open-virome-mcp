@@ -609,6 +609,7 @@ dependencies = [
     { name = "neo4j" },
     { name = "psycopg2" },
     { name = "pylint" },
+    { name = "requests" },
 ]
 
 [package.metadata]
@@ -620,6 +621,7 @@ requires-dist = [
     { name = "neo4j", specifier = ">=5.28.1" },
     { name = "psycopg2", specifier = ">=2.9.10" },
     { name = "pylint", specifier = ">=3.3.7" },
+    { name = "requests", specifier = ">=2.32.4" },
 ]
 
 [[package]]

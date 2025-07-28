@@ -1,4 +1,34 @@
+import requests
 from src.resources.psql import run_sql_query
+
+
+def post_to_openvirome_api(route: str, data: dict) -> dict:
+    """
+    Post data to the OpenVirome API.
+    Args:
+        data: The data to post.
+    Returns:
+        The response from the API.
+    """
+    valid_routes = [
+        "/identifiers",
+        "/counts",
+        "/results",
+        "/mwas",
+    ]
+    if route not in valid_routes:
+        raise ValueError(f"Invalid route: {route}. Valid routes are: {valid_routes}")
+
+    url = "https://zrdbegawce.execute-api.us-east-1.amazonaws.com/prod/" + route
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Referer": "https://mcp.openvirome.com/",
+        "Origin": "https://mcp.openvirome.com",
+    }
+    response = requests.post(url, headers=headers, json=data, timeout=300)
+    return response.json()
 
 
 def get_similar_viruses():
