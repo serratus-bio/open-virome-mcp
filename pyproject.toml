@@ -5,9 +5,11 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "asyncio>=3.4.3",
     "bio>=1.8.0",
     "black>=25.1.0",
     "dotenv>=0.9.9",
+    "langgraph>=0.6.2",
     "mcp[cli]",
     "neo4j>=5.28.1",
     "psycopg2>=2.9.10",
