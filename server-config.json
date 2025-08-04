@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "open-virome-mcp": {
+      "command": "python",
+      "args": ["main.py"],
+      "env": {
+        "MCP_SERVER_REQUEST_TIMEOUT": 60000,
+        "MCP_REQUEST_MAX_TOTAL_TIMEOUT": 300000,
+        "MCP_AUTO_OPEN_ENABLED": false
+      }
+    }
+  }
+}

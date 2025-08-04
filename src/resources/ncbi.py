@@ -2,7 +2,6 @@ import os
 
 from Bio import Entrez
 
-
 Entrez.email = os.environ.get("ENTREZ_EMAIL")
 
 

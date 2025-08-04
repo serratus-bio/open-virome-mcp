@@ -14,7 +14,8 @@ def register_prompts(mcp):
     logging.info("Registering prompts")
 
     @mcp.prompt(
-        title="prompt_template_str", description="Example string template prompt"
+        title="prompt_template_str",
+        description="Example string template prompt",
     )
     def prompt_template_str_handler(message: str) -> str:
         """Handle the prompt for string template."""

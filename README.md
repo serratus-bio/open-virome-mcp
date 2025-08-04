@@ -37,15 +37,28 @@ In left panel, enter command and argument values if not already pre-filled, then
 
 ```md
 > Transport type: STDI
-> Command: uv
-> Arguments: run --with mcp mcp run main.py
+> Command: python
+> Arguments: main.py
+```
+
+You may need to manually update 'Configuration' to increase timeout values if not setting them with `server-config.json`
+
+```md
+> Request Timeout: 60000
+> Maximum Total Timeout: 1200000
 ```
 
 ### Run server locally
 
 `uv run main.py`
 
+Or with npx to use the config file:
+
+`npx @modelcontextprotocol/inspector --config server-config.json --server open-virome-mcp`
+
 ### Run MCP client integration
+
+See `server-config.json` for additional config
 
 ```json
 {
@@ -74,6 +87,6 @@ In left panel, enter command and argument values if not already pre-filled, then
 
 These can be added as github actions later
 
-Format: `black .`
+Format: `black .` or `black --preview  --enable-unstable-feature=string_processing .`
 
 Lint: `pylint src`

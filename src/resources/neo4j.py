@@ -74,3 +74,21 @@ def get_connection() -> Neo4jConnection:
         user=os.environ.get("NEO4J_USER"),
         pwd=os.environ.get("NEO4J_PASSWORD"),
     )
+
+
+def run_neo4j_query(query: str, params: dict[str, Any] | None = None) -> list[Record]:
+    """
+    Run a Neo4j query using the default connection.
+
+    Args:
+        query: The Cypher query string.
+        parameters: Optional dictionary of parameters to pass.
+
+    Returns:
+        A list of neo4j.Record objects.
+    """
+    connection = get_connection()
+    try:
+        return connection.query(query, params)
+    finally:
+        connection.close()
